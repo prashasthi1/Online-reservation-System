@@ -27,16 +27,21 @@
             <li><a href="#service">SERVICES </a></li>
             <li><a href="menu.html">MENU</a></li>
             <li><a href="#offer">OFFERS</a></li>
-            <li><a href="gallery.html">GALLERY</a></li>
-            <li><a href="reservation.html">RESERVATION</a></li>
+            <li><a href="#gallery">GALLERY</a></li>
+            <li><a href="#reservation">RESERVATION</a></li>
+            <li><a href="#staff">STAFF</a></li>
             <li><a href="#contact">CONTACT</a></li>
+            <li><a href="Home.html#review">FEEDBACK</a></li>
          </ul>
         <div class="nav-icons">
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
 
         <div class="nav-icons">
-            <a href="#" class="login">Login</a>
+                <a href="login.html" class="login">Login</a> 
+        </div>
+        <div class="nav-icons">
+                <a href="register.html" class="login">Signup</a> 
         </div>
 
      </header>
@@ -45,7 +50,8 @@
 
       <section class="home" id="home">
         <div class="hero-container">
-            <img src="img/bg-hero1.jpg" alt="Hero Image" class="hero-image">
+            <img src="img/bg-hero2.jpg" alt="Hero Image" class="hero-image">
+            <div class="glass-overlay1"></div>
             <div class="hero-text">
                 <h1>Meet, <span>Eat &</span> <br> Enjoy the True <br> Taste</h1>
             </div>
@@ -75,11 +81,28 @@
         </div>
       </section>
 
-      <!-- services -->
+      <!-- about us -->
+       <section class="about" id="about">
+        <div class="about-img">
+            <img src="img/about.png">
+        </div>
+
+        <div class="about-text">
+            <h2>Lining well begins <br> with eating well.</h2>
+            <p>Currently all the records are stored manually in paper based systems. However since the number
+                of job seekers being consulted has been increased, the management has decided to have a Web
+                based system to give a better service to the job seekers. Most importantly the system must have
+                the facility to schedule appointment online as well as to produce “on demand “reports to
+                management for efficient and effective decision making.</p>
+            <a href="#" class="btn">Explore Story<i class='bx bxs-right-arrow' ></i></a>
+        </div>
+       </section>
+       
+
+       <!-- services -->
       <section class="services-section" id="service">
         <div class="middle-text">
-            <h4>EXPLORE OUR SERVICES</h4>
-            
+            <h2>EXPLORE OUR SERVICES</h2>
         </div>
 
         <div class="review-content">
@@ -114,7 +137,7 @@
                          <img src="img/s3.jpg">
                      </div>
                      <div class="bxx-text">
-                         <h4>ake away</h4>
+                         <h4>Take away</h4>
                      </div>
                  </div> 
                  <p>During the years of operation of our restaurant, we try to provide extra services for our customers.</p>
@@ -135,31 +158,11 @@
         </div>
     </section>
 
-
-
-
-      <!-- about us -->
-       <section class="about" id="about">
-        <div class="about-img">
-            <img src="img/about.png">
-        </div>
-
-        <div class="about-text">
-            <h2>Lining well begins <br> with eating well.</h2>
-            <p>Currently all the records are stored manually in paper based systems. However since the number
-                of job seekers being consulted has been increased, the management has decided to have a Web
-                based system to give a better service to the job seekers. Most importantly the system must have
-                the facility to schedule appointment online as well as to produce “on demand “reports to
-                management for efficient and effective decision making.</p>
-            <a href="#" class="btn">Explore Story<i class='bx bxs-right-arrow' ></i></a>
-        </div>
-       </section>
-
-       <!-- our shop -->
+       <!-- offer -->
         <section class="offer" id="offer">
             <div class="middle-text">
-                <h4>OFFER</h4>
-                <h2>Today's Special</h2>
+                <h2>OFFER</h2>
+                <h4>Today's Special</h4>
             </div>
 
             <div class="shop-content">
@@ -171,10 +174,82 @@
                 
         </section>
 
+        <!-- gallery -->
+
+          <section class="gallery" id="gallery">
+            <div class="middle-text">
+                <h2>Gallery</h2>
+                <h4>Check out our snaps from the kitchen & Restaurant</h4>
+            </div>
+                <div class="gallery-row">
+                    <img src="img/gb1.jpg">
+                    <img src="img/gb2.jpg">
+                    <img src="img/gb3.jpg">
+                    <img src="img/gb4.jpg">
+                    <img src="img/gb5.png">
+                    <img src="img/gf1.jpg">
+                    <img src="img/gf2.jpg">
+                    <img src="img/gf3.jpg">
+                    <img src="img/gf4.jpg">
+                    <img src="img/gf5.jpg">
+                    <img src="img/gd1.jpg">
+                    <img src="img/gd2.jpg">
+                    <img src="img/gd3.jpg">
+                    <img src="img/gd4.jpg">
+                    <img src="img/gr1.jpg">
+                    <img src="img/gr3.jpg">
+                    <img src="img/gr4.jpg">
+                </div>
+          </section>
+
+          <div class="modal" id="modal">
+            <span class="close">&times;</span>
+            <img src="" id="modal-img">
+          </div>
+
+          <!-- reservation -->
+          <section class="reservation-container" id="reservation">
+            <h1>Reservation</h1>
+            <div class="reservation-cont">
+            <!-- <div class="img">
+                <img src="img/reserv.png" alt="">
+            </div> -->
+            <div class="reserv">
+            <div>
+                <h3>Book A Table Online</h3>
+            </div>
+            
+            <form class="form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="datetime">Date & Time</label>
+                    <input type="datetime-local" id="datetime" name="datetime">
+                </div>
+                <div class="form-group">
+                    <label for="people">No Of People</label>
+                    <input type="number" id="people" name="people" placeholder="No Of People">
+                </div>
+                <div class="form-group">
+                    <label for="request">Special Request</label>
+                    <textarea id="request" name="request" placeholder="Special Request"></textarea>
+                </div>
+                <button type="submit">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+        </section>
+
        <!-- staff -->
-       <section class="review" id="review">
+       <section class="staff" id="staff">
         <div class="middle-text">
-            <h4>OUR CHEFFS</h4>
+            <h2>OUR CHEFFS</h2>
             <p>One of Sri Lanka's most beloved restaurants, CityLand has been welcoming guests to Matara<br> for over two 
                 decades to enjoy contemporary local and foreign hospitality <br> and unparalleled service. 
                 Chef Montas Darwin's ever-evolving popular menu <br>showcases the restaurant's relationships with local farms and suppliers.</p>
@@ -269,12 +344,34 @@
         </div>
      </section>
 
+         <!-- Contact -->
+<section class="contact" id="contact">
+    <div class="contact-form">
+        <h2>CONTACT US</h2>
+        <form>
+          <div class="form-item">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-item">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-item">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <div class="btn3">Submit</div>
+        </form>
+      </div>
+    </section>
+
 
         <!-- review -->
          <section class="review" id="review">
             <div class="middle-text">
-                <h4>OUR CUSTOMERS</h4>
-                <h2>Clients Review About Our Food</h2>
+                <h2>OUR CUSTOMERS</h2>
+                <h4>Clients Review About Our Food</h4>
             </div>
 
             <div class="review-content">
@@ -344,12 +441,10 @@
             </div>
          </section>
 
-    <!-- Contact -->
-     <section class="contact" id="contact">
-        <div class="contact-content">
+         <!-- footer -->
+          <footer>
 
             <div class="contact-text">
-                <h2>CONTACT US</h2>
                 <p>Over its history as a food, the main uses of honey are in cooking,
                     baking, desserts, as a spresd on bread, as an addition to various beverages 
                     such as tea, and as a sweetener in some commercial beverages</p>
@@ -374,8 +469,7 @@
                 <a href="#"><i class='bx bx-envelope' ></i>info@abcrestaurant.com</a>
             </div>
          </div>   
-        </div>
-     </section>
+    </footer>
 
      <!-- scroll top -->
       <a href="#" class="scroll">
