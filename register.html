@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CityLand Restaurant - Register</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
 
     <!-- box icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -21,55 +21,103 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f3f4f6;
+            background-color: #212121;
             margin: 0;
+            
         }
 
         .register-box {
-            background-color: #fff;
-            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.546);
+            padding: 0 10px;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 1025px;
             text-align: center;
+            height: 550px;
+            display: flex;
+            justify-content: center;
+            min-height: 10vh;
+          
         }
 
-        .register-box img {
-            max-width: 100px;
-            margin-bottom: 20px;
+        .register-box #back{
+            display: flex;
+            align-items: center;
+            background: #f3145bd5;
+            margin: 5px;
+        }
+
+        #back{
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            margin-bottom: 200px;
+        }
+        
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            justify-content: center;
+        }
+
+        form h2 {
+            margin: 20px;
+            text-align: center;
         }
 
         .register-box h2 {
             margin-bottom: 20px;
+            text-align: center;
             font-weight: 600;
             color: #333;
         }
 
         .input-container {
+            width: 500px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            display: -ms-flexbox;
+            display: flex;
             position: relative;
             margin-bottom: 15px;
+            text-align: left;
         }
 
         .input-container i {
+            padding: 10px;
+            text-align: center;
+            margin-right: 3px;
             position: absolute;
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            color: #aaa;
+            color: black;
         }
 
         .input-field {
-            width: 100%;
-            padding: 10px 40px;
+            width: 70%;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
             color: #333;
             outline: none;
             transition: all 0.3s ease;
+         
+        }
+
+        .input-container #image{
+            background: #fff;
         }
 
         .input-field:focus {
-            border-color: #007bff;
+            border-color: #ca3ba1;
+        }
+
+        .input-field:invalid {
+            border-color: #4d4b4b;
         }
 
         select.input-field {
@@ -84,24 +132,30 @@
             background-size: 12px;
         }
 
-        .btn1 {
+        .btn2 {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
+            padding: 15px 20px;
+            background-color: #f3145bd5;
+            color: #000;
             border: none;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
             margin-top: 20px;
+            width: 30%;
+            opacity: 0.9;
+            margin-left: 170px;
+            align-items: center;
+            text-align: center;
         }
 
-        .btn1:hover {
-            background-color: #0056b3;
+        .btn2:hover {
+            opacity: 1;
         }
 
         .ex3 {
+            text-align: center;
             margin-top: 20px;
             font-size: 14px;
             color: #666;
@@ -115,53 +169,60 @@
         .ex3 a:hover {
             text-decoration: underline;
         }
+
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+        }
+
     </style>
 </head>
 <body>
     <div class="register-box">
+        <a href="Home.html"> <i class='bx bx-arrow-back' id="back"></i></a>
         <img src="img/reg.jpg" alt="CityLand Logo">
 
-        <form action="#" method="post" id="registerForm">
+        <form id="registerForm">
             <h2>Create an Account</h2>
             
             <div class="input-container">
                 <i class='bx bxs-user-circle'></i>
-                <input class="input-field" type="text" placeholder="Your Name" name="name" required>
+                <input id="name" class="input-field" type="text" placeholder="Your Name" name="name" required>
+                <span id="nameError" class="error"></span>
             </div>
 
             <div class="input-container">
                 <i class='bx bxs-envelope'></i>
-                <input class="input-field" type="email" placeholder="Email" name="email" required>
+                <input id="email" class="input-field" type="email" placeholder="Your Email" name="email" required>
+                <span id="emailError" class="error"></span>
+            </div>
+
+            <div class="input-container">
+                <i class='bx bx-key'></i>
+                <input id="password" class="input-field" type="password" placeholder="Your Password" name="psw" required minlength="6">
+                <span id="passwordError" class="error"></span>
+            </div>
+
+            <div class="input-container">
+                <i class='bx bxs-image-add' ></i>
+                <input type="file" class="input-field" name="image" required accept="image/*" id="image">
             </div>
 
             <div class="input-container">
                 <i class='bx bxs-phone'></i>
-                <input class="input-field" type="tel" placeholder="Telephone Number" name="phone" required>
+                <input id="phone" class="input-field" type="tel" placeholder="Your Telephone Number" name="phone" required pattern="^\d{10}$">
+                <span id="phoneError" class="error"></span>
             </div>
-      
+
             <div class="input-container">
-                <i class='bx bx-key'></i>
-                <input class="input-field" type="password" placeholder="Password" name="psw" required>
+                <i class='bx bxs-map'></i>
+                <input id="address" class="input-field" type="text" placeholder="Your Address" name="address" required>
+                <span id="addressError" class="error"></span>
             </div>
     
-            <div class="input-container">
-                <i class='bx bx-key'></i>
-                <input class="input-field" type="password" placeholder="Confirm password" name="pswcon" required>
-            </div>
+            <button type="submit" class="btn2" id="btnreg">Register</button>
     
-            <div class="input-container">
-                <i class='bx bxs-user'></i>
-                <select class="input-field" id="role" name="role" required>
-                    <option value="Role" disabled selected>- Role -</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Staff">Staff</option>
-                    <option value="Customer">Customer</option>
-                </select>
-            </div>
-    
-            <button type="submit" class="btn1">Register</button>
-    
-            <p class="ex3">Already have an account? <a href="login.html"> Login </a></p>
+            <p class="ex3">Already have an account? <a href="login.html">Login</a></p>
         </form>
     </div>
 
@@ -169,15 +230,110 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            Swal.fire({
-                icon: 'success',
-                title: 'Account Created',
-                text: 'Your account has been successfully created!',
-                confirmButtonText: 'OK'
+        document.getElementById("registerForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+      
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const image = document.getElementById("image").files[0];
+          const phone = document.getElementById("phone").value;
+          const address = document.getElementById("address").value;
+      
+          // Reset errors
+          resetErrors();
+      
+          let valid = true;
+      
+          if (!name) {
+            showError("nameError", "Name is required.");
+            valid = false;
+          }
+      
+          if (!validateEmail(email)) {
+            showError("emailError", "Please enter a valid email.");
+            valid = false;
+          }
+      
+          if (password.length < 6) {
+            showError("passwordError", "Password must be at least 6 characters.");
+            valid = false;
+          }
+      
+          if (!/^\d{10}$/.test(phone)) {
+            showError("phoneError", "Phone number must be 10 digits.");
+            valid = false;
+          }
+      
+          if (!address) {
+            showError("addressError", "Address is required.");
+            valid = false;
+          }
+      
+          if (!image) {
+            Swal.fire("Please upload your profile image.");
+            valid = false;
+          }
+      
+          if (!valid) {
+            return;
+          }
+      
+          const formData = new FormData();
+          formData.append("customerName", name);
+          formData.append("email", email);
+          formData.append("password", password);
+          formData.append("customerProfile", image);
+          formData.append("contactNo", phone);
+          formData.append("customerAddress", address);
+          formData.append("roleType", "USER");
+      
+          // API call
+          fetch("http://localhost:8080/api/create-customers", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Registration failed. Please try again.");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data) {
+                Swal.fire({
+                  title: "Registration successful!",
+                  text: "Welcome to CityLand Restaurant!",
+                  icon: "success",
+                }).then(() => {
+                  window.location.href = "login.html"; // Redirect to login page
+                });
+              } else {
+                Swal.fire("Registration failed", data.message || "Please try again.", "error");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              Swal.fire("Error", "Registration failed. Already exist Customer.", "error");
             });
         });
-    </script>
+      
+        // Email validation function
+        function validateEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(String(email).toLowerCase());
+        }
+      
+        // Show error message
+        function showError(elementId, message) {
+          document.getElementById(elementId).textContent = message;
+        }
+      
+        // Reset all error messages
+        function resetErrors() {
+          document.querySelectorAll(".error").forEach((el) => (el.textContent = ""));
+        }
+      </script>
+      
 </body>
 </html>
