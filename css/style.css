@@ -1054,12 +1054,13 @@ button[type="submit"]:hover {
 /* register */
 
 .register-box {
-    width: 1000px; 
+    width: 1100px; 
     margin: 100px auto; 
     background-color: rgba(255, 255, 255, 0.546); 
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 10vh;
+   
 }
 
 .register-box #back{
@@ -1067,12 +1068,14 @@ button[type="submit"]:hover {
     align-items: center;
     background: var(--main-color);;
     margin: 5px;
+    
 }
 
 #back{
     color: #fff;
     font-size: var(--p-font);
     padding: 8px 15px;;
+  
 }
 
 .register-content {
@@ -1082,7 +1085,7 @@ button[type="submit"]:hover {
 }
 
 .register-box img{
-    height: 100vh;
+    height: 500px;
     width: 500px;
     /* margin: 20px */
 }
@@ -1092,6 +1095,7 @@ form {
     flex-direction: column;
     gap: 1px; 
     justify-content: center;
+   
 }
 
 .ex1 {
@@ -1108,6 +1112,7 @@ form {
     justify-content: center;
     align-items: center;
     gap: 10px;
+   
   }
 
   .input-container i{
@@ -1115,6 +1120,7 @@ form {
   color: rgb(0, 0, 0);
   text-align: center;;
   margin-right: 3px;
+  
   }
 
 
@@ -1132,9 +1138,11 @@ form {
     cursor: pointer;
     width: 30%;
     opacity: 0.9;
-    margin-left: 170px;
+    margin-left: 180px;
     align-items: center;
     text-align: center;
+    border-radius: 5px;
+  
   }
  
   
