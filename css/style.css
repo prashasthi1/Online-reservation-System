@@ -635,7 +635,7 @@ header.sticky{
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* background-color: rgba(0, 0, 0, 0.9); */
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -698,8 +698,6 @@ header.sticky{
     border: 1px solid #ccc;
     outline: none;
 }
-
-
 
 /* .search-button {
     padding: 5px 10px;
@@ -872,7 +870,7 @@ header.sticky{
     position: absolute;
     right: 150px;
     top: 22px;
-    border-radius: 100%;
+    
 }
 
 .m-nav-icons .login{

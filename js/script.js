@@ -115,45 +115,46 @@ document.querySelector('.bx-x-circle').addEventListener('click', function() {
 
 //reservation
 
-document.getElementById('reservationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+// document.getElementById('reservationForm').addEventListener('submit', function(event) {
+//     // alert("prasha");
+//     event.preventDefault();
 
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const datetime = document.getElementById('datetime').value.trim();
-    const people = document.getElementById('people').value.trim();
+//     // Get form values
+//     const name = document.getElementById('name').value.trim();
+//     const email = document.getElementById('email').value.trim();
+//     const datetime = document.getElementById('datetime').value.trim();
+//     const people = document.getElementById('people').value.trim();
 
-    // Validation
-    if (name === '') {
-        Swal.fire('Validation Error', 'Please enter your name.', 'error');
-        return;
-    }
+//     // Validation
+//     if (name === '') {
+//         Swal.fire('Validation Error', 'Please enter your name.', 'error');
+//         return;
+//     }
 
-    if (email === '') {
-        Swal.fire('Validation Error', 'Please enter your email.', 'error');
-        return;
-    }
+//     if (email === '') {
+//         Swal.fire('Validation Error', 'Please enter your email.', 'error');
+//         return;
+//     }
 
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailPattern.test(email)) {
-        Swal.fire('Validation Error', 'Please enter a valid email address.', 'error');
-        return;
-    }
+//     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+//     if (!emailPattern.test(email)) {
+//         Swal.fire('Validation Error', 'Please enter a valid email address.', 'error');
+//         return;
+//     }
 
-    if (datetime === '') {
-        Swal.fire('Validation Error', 'Please select a date and time.', 'error');
-        return;
-    }
+//     if (datetime === '') {
+//         Swal.fire('Validation Error', 'Please select a date and time.', 'error');
+//         return;
+//     }
 
-    if (people === '' || isNaN(people) || parseInt(people) <= 0) {
-        Swal.fire('Validation Error', 'Please enter a valid number of people.', 'error');
-        return;
-    }
+//     if (people === '' || isNaN(people) || parseInt(people) <= 0) {
+//         Swal.fire('Validation Error', 'Please enter a valid number of people.', 'error');
+//         return;
+//     }
 
-    // If all validation passes
-    Swal.fire('Success', 'Your reservation has been successfully submitted!', 'success');
-});
+//     // If all validation passes
+//     Swal.fire('Success', 'Your reservation has been successfully submitted!', 'success');
+// });
 
 // login
 
@@ -247,6 +248,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault();
+
+       
         
         let name = document.getElementById('name').value.trim();
         let email = document.getElementById('email').value.trim();
@@ -270,4 +273,73 @@ document.addEventListener('DOMContentLoaded', function() {
         Swal.fire('Success!', 'Your message has been sent.', 'success');
         document.getElementById('contactForm').reset();
     });
+
+
+
+    document.getElementById("btnBookTable").addEventListener("click", () => {
+        alert("prasha");
+            const customerName = document.getElementById("customer-name-table-booking").value;
+            const email = document.getElementById("table-booking-email").value;
+            const bookingCount = document.getElementById("table-booking-person-count").value;
+            const dateTime = document.getElementById("table-booking-dateTime").value;
+            const specialRequest = document.getElementById("table-booking-special-request").value;
+    
+          
+        
+            // Basic validation to ensure fields are not empty
+            if (customerName != null && email != null && dateTime != null && bookingCount != null) {
+                fetch("http://localhost:8080/api/restauranttablebook/add-tablebooking", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        customerName: customerName,
+                        email: email,
+                        bookingCount: bookingCount,
+                        dateTime: dateTime,
+                        specialRequest: specialRequest,
+                        status: "PENDING",
+                    }),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data) {
+                        Swal.fire({
+                            title: 'Reservation Successful!',
+                            text: 'Your table has been booked.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+              
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Reservation Failed',
+                            text: 'We were unable to process your reservation. Please try again later.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        title: 'Error Occurred',
+                        text: 'Something went wrong. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    console.error("Error:", error);
+                });
+            } else {
+                Swal.fire({
+                    title: 'Incomplete Form',
+                    text: 'Please fill in all required fields.',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+        
+    
+    
 
