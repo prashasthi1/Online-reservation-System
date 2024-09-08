@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
-
+    <script defer src="js/login.js"></script>
 </head>
 <body>
     <div class="register-box">
@@ -44,56 +44,56 @@
 
     <script>
         // Function to fetch data from the API when the login button is clicked
-        document.getElementById('btnlog').addEventListener('click', function() {
-            // Get the email and password values
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        // document.getElementById('btnlog').addEventListener('click', function() {
+        //     // Get the email and password values
+        //     const email = document.getElementById('email').value;
+        //     const password = document.getElementById('password').value;
 
-            // Basic validation to check if both fields are filled
-            if (!email || !password) {
-                Swal.fire('Error', 'Please fill in both email and password', 'error');
-                return;
-            }
+        //     // Basic validation to check if both fields are filled
+        //     if (!email || !password) {
+        //         Swal.fire('Error', 'Please fill in both email and password', 'error');
+        //         return;
+        //     }
 
-            // API URL
-            const apiURL = 'http://localhost:8080/api/customer-login';
+        //     // API URL
+        //     const apiURL = 'http://localhost:8080/api/customer-login';
 
-            // Create login data object
-            const loginData = {
-                email: email,
-                password: password
-            };
+        //     // Create login data object
+        //     const loginData = {
+        //         email: email,
+        //         password: password
+        //     };
 
-            // Send POST request to the API
-            fetch(apiURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(loginData) // Convert the object to a JSON string
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data); // Log for debugging
-                if (data.success) {
-                    Swal.fire('Success', 'Login successful!', 'success').then(() => {
-                        // Redirect to dashboard or homepage if login is successful
-                        window.location.href = 'dashboard.html'; // Replace with actual page
-                    });
-                } else {
-                    Swal.fire('Error', 'Invalid email or password', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Fetch error:', error);
-                Swal.fire('Error', 'An error occurred. Please try again later.', 'error');
-            });
-        });
-    </script>
+        //     // Send POST request to the API
+        //     fetch(apiURL, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(loginData) // Convert the object to a JSON string
+        //     })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log(data); // Log for debugging
+        //         if (data.success) {
+        //             Swal.fire('Success', 'Login successful!', 'success').then(() => {
+        //                 // Redirect to dashboard or homepage if login is successful
+        //                 window.location.href = 'dashboard.html'; // Replace with actual page
+        //             });
+        //         } else {
+        //             Swal.fire('Error', 'Invalid email or password', 'error');
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Fetch error:', error);
+        //         Swal.fire('Error', 'An error occurred. Please try again later.', 'error');
+        //     });
+        // });
+     </script>
 </body>
 </html>
