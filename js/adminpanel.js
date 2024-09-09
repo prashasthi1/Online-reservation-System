@@ -558,3 +558,131 @@ function openUpdateStaffModal(customerIdU, customerNameU, customerProfileU, cont
     });
   }
   
+
+
+
+
+
+
+
+  document.addEventListener("DOMContentLoaded", fetchFeedback);
+
+  function fetchFeedback() {
+      fetch("http://localhost:8080/api/feedback/view-all-customer-feedback")
+          .then(response => response.json())
+          .then(data => {
+              const tableBody = document.getElementById("customerFeedbackBody");
+  
+              if (tableBody) {
+                  tableBody.innerHTML = ""; // Clear previous rows
+  
+                  data.forEach(t => {
+                      let tr = document.createElement("tr");
+  
+                      // Feedback ID column
+                      let feedbackId = document.createElement("td");
+                      feedbackId.textContent = t.feedbackId;
+  
+                      // Customer Name column
+                      let customerName = document.createElement("td");
+                      customerName.textContent = t.customerName;
+  
+                      // Email column
+                      let email = document.createElement("td");
+                      email.textContent = t.email;
+  
+                      // Message column
+                      let message = document.createElement("td");
+                      message.textContent = t.message;
+  
+                      // Status column
+                      let status = document.createElement("td");
+                      let statusSpan = document.createElement("span");
+                      statusSpan.className = t.status === "Verified" ? "verified-status" : "pending-status";
+                      statusSpan.textContent = t.status;
+                      status.appendChild(statusSpan);
+  
+                      // Action column
+                      let action = document.createElement("td");
+  
+                      // Verify button
+                      let verifyButton = document.createElement("button");
+                      verifyButton.className = "btn btn-success me-2";
+                      verifyButton.textContent = "VERIFY";
+                      verifyButton.onclick = function () {
+                          updateFeedbackStatus(t.feedbackId, "Verified");
+                      };
+  
+                      // Delete button
+                      let deleteButton = document.createElement("button");
+                      deleteButton.className = "btn btn-danger";
+                      deleteButton.textContent = "DELETE";
+                      deleteButton.onclick = function () {
+                          deleteFeedbackById(t.feedbackId, tr);
+                      };
+  
+                      // Append buttons to action column
+                      action.appendChild(verifyButton);
+                      action.appendChild(deleteButton);
+  
+                      // Append all columns to the row
+                      tr.appendChild(feedbackId);
+                      tr.appendChild(customerName);
+                      tr.appendChild(email);
+                      tr.appendChild(message);
+                      tr.appendChild(status);
+                      tr.appendChild(action);
+  
+                      // Append the row to the table body
+                      tableBody.appendChild(tr);
+                  });
+              }
+          })
+          .catch(error => {
+              console.error("Error fetching feedback:", error);
+          });
+  }
+  
+  // Function to delete feedback by ID using SweetAlert
+  function deleteFeedbackById(feedbackId, row) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              fetch(`http://localhost:8080/api/feedback/delete-customer/${feedbackId}`, {
+                  method: "DELETE"
+              })
+              .then(response => {
+                  if (response.ok) {
+                      // Remove the row from the table after successful deletion
+                      row.remove();
+                      Swal.fire(
+                          'Deleted!',
+                          'Feedback has been deleted.',
+                          'success'
+                      );
+                  } else {
+                      Swal.fire(
+                          'Error!',
+                          'Failed to delete feedback.',
+                          'error'
+                      );
+                  }
+              })
+              .catch(error => {
+                  console.error("Error deleting feedback:", error);
+                  Swal.fire(
+                      'Error!',
+                      'An error occurred while deleting feedback.',
+                      'error'
+                  );
+              });
+          }
+      });
+  }
