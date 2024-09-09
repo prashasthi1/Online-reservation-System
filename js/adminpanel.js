@@ -1,9 +1,10 @@
 let cid = 0;
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch data periodically every 5 seconds
-  setInterval(fetchAndUpdateTable, 3000); // Live update every 5 seconds
+  setInterval(fetchAndUpdateTable, 2000); // Live update every 5 seconds
 });
 
+// Fetch customers and display in the table
 fetch("http://localhost:8080/api/view-all-customers-by-role?roleType=USER")
   .then((response) => response.json())
   .then((data) => {
@@ -82,6 +83,7 @@ fetch("http://localhost:8080/api/view-all-customers-by-role?roleType=USER")
       }
     });
   });
+
 
 // Function to fetch and update table data
 function fetchAndUpdateTable() {
@@ -251,6 +253,7 @@ function deleteBookingById(bookId) {
 
 // Function to open update customer modal
 function openUpdateCustomerModal(
+    
     customerIdU,
     customerNameU,
     customerProfileU,
@@ -258,11 +261,14 @@ function openUpdateCustomerModal(
     emailU,
     customerAddressU
   ) {
-    cid = customerIdU;
+    // Populate form fields with existing customer data
+    document.getElementById("updateCustomerId").value = customerIdU;
     document.getElementById("updateUserName").value = customerNameU;
     document.getElementById("updateContactNumber").value = contactNoU;
     document.getElementById("updateEmail").value = emailU;
     document.getElementById("updateAddress").value = customerAddressU;
+    
+    // Set the current profile image in a data attribute (used later when saving)
     document.getElementById("updateAvatar").dataset.profile = customerProfileU;
   
     // Open the update modal
@@ -271,40 +277,43 @@ function openUpdateCustomerModal(
   
   // Function to submit the updated form
   function submitUpdateUserForm() {
+   
+    const customerId = document.getElementById("updateCustomerId").value;
     const customerName = document.getElementById("updateUserName").value;
     const contactNo = document.getElementById("updateContactNumber").value;
     const email = document.getElementById("updateEmail").value;
     const customerAddress = document.getElementById("updateAddress").value;
     const customerProfileFile = document.getElementById("updateAvatar").files[0];
-    const customerProfile = document.getElementById("updateAvatar").dataset.profile;
-    const customerPassword = document.getElementById("updatePassword").value;
+    const customerProfile = document.getElementById("updateAvatar").dataset.profile; // Existing profile image
   
     const formData = new FormData();
     formData.append("customerName", customerName);
     formData.append("contactNo", contactNo);
     formData.append("email", email);
-    formData.append("password", customerPassword);
     formData.append("customerAddress", customerAddress);
   
+    // If a new image is uploaded, append it; otherwise, keep the existing image
     if (customerProfileFile) {
-      formData.append("customerProfile", customerProfileFile); // If a new image is uploaded
+      formData.append("customerProfile", customerProfileFile);
     } else {
-      formData.append("customerProfile", customerProfile); // If no new image is uploaded, keep the old one
+      formData.append("customerProfile", customerProfile);
     }
-  
-    fetch(`http://localhost:8080/api/update-customer/${cid}`, {
+    
+    // Send the updated customer data
+    fetch(`http://localhost:8080/api/update-customer/${customerId}`, {
       method: "PUT",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
         if (data) {
+            alert("data");
           Swal.fire({
             title: "Success!",
-            text: "Update successful!",
+            text: "Customer details updated successfully!",
             icon: "success",
             confirmButtonText: "OK",
-          }).then(() => location.reload());
+          }).then(() => location.reload()); // Reload the page after successful update
         } else {
           Swal.fire({
             title: "Error!",
@@ -330,7 +339,7 @@ function openUpdateCustomerModal(
   function deleteCustomerById(id) {
     Swal.fire({
       title: "Are you sure?",
-      text: "This action will permanently delete the user and cannot be undone!",
+      text: "This action will permanently delete the customer and cannot be undone!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -346,14 +355,14 @@ function openUpdateCustomerModal(
             if (response.ok) {
               Swal.fire({
                 title: "Deleted!",
-                text: "The user has been deleted successfully.",
+                text: "Customer has been deleted.",
                 icon: "success",
                 confirmButtonText: "OK",
-              }).then(() => location.reload());
+              }).then(() => location.reload()); // Reload the page after deletion
             } else {
               Swal.fire({
                 title: "Error!",
-                text: "Failed to delete the user. Please try again.",
+                text: "Failed to delete the customer. Please try again.",
                 icon: "error",
                 confirmButtonText: "OK",
               });
@@ -362,7 +371,7 @@ function openUpdateCustomerModal(
           .catch(() => {
             Swal.fire({
               title: "Error!",
-              text: "An error occurred while deleting the user. Please try again later.",
+              text: "An error occurred while deleting the customer. Please try again later.",
               icon: "error",
               confirmButtonText: "OK",
             });
