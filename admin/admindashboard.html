@@ -140,30 +140,43 @@
         </style>
 </head>
 <body>
+    <script>
+        console.log(sessionStorage.getItem("cid"));
+        sessionStorage.getItem("cid") != null
+          ? (window.location.href = "#")
+          : (window.location.href = "../login.html");
+  
+        function logout() {
+          sessionStorage.removeItem("cid");
+          sessionStorage.clear();
+          window.location.href = "../login.html";
+          
+        }
+      </script>
          <!-- Sidebar -->
      <div class="sidebar">
         <div class="sidebar-header">A B C</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                <a class="nav-link active" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tableBook.html">Book A Table List</a>
+                <a class="nav-link" href="../admin/adminpanel/tablebookingdetails.html">Book A Table List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="orderdetails.html">Order List</a>
+                <a class="nav-link" href="../admin/adminpanel/orderdetails.html">Order List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="staff.html">Staff List</a>
+                <a class="nav-link" href="../admin/adminpanel/staffdetails.html">Staff List</a>
             </li>
             <li class="nav-item"></li>
-                <a class="nav-link" href="customer.html">Customer List</a>
+                <a class="nav-link" href="../admin/adminpanel/customerdetails.html">Customer List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Menu.html">Menu List</a>
+                <a class="nav-link" href="../admin/adminpanel/menudetails.html">Menu List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Feedback.html">Customere Feedback</a>
+                <a class="nav-link" href="../admin/adminpanel/customersfeedback.html">Customere Feedback</a>
             </li>
         </ul>
     </div>
