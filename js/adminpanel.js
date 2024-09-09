@@ -4,6 +4,81 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(fetchAndUpdateTable, 2000); // Live update every 5 seconds
 });
 
+fetch("http://localhost:8080/api/view-all-customers-by-role?roleType=STAFF")
+.then((response) => response.json())
+.then((data) => {
+  const staffTableBody = document.getElementById("staffTableBody");
+  data.forEach((s) => {
+    let tr = document.createElement("tr");
+
+    // Customer ID
+    let customerId = document.createElement("td");
+    customerId.textContent = s.customerId;
+
+    // Staff Name
+    let customerName = document.createElement("td");
+    customerName.textContent = s.customerName;
+
+    // Email
+    let email = document.createElement("td");
+    email.textContent = s.email;
+
+    // Avatar
+    let customerProfileCover = document.createElement("td");
+    let customerProfile = document.createElement("img");
+    customerProfile.src = `data:image/png;base64,${s.customerProfile}`;
+    customerProfile.style.width = "50px";
+    customerProfile.style.height = "50px";
+    customerProfileCover.appendChild(customerProfile);
+
+    // Contact Number
+    let contactNo = document.createElement("td");
+    contactNo.textContent = s.contactNo;
+
+    // Address
+    let customerAddress = document.createElement("td");
+    customerAddress.textContent = s.customerAddress;
+
+    // Role Type
+    let roleType = document.createElement("td");
+    roleType.textContent = s.roleType;
+
+    // Action buttons (Edit and Delete as two separate buttons)
+    let buttonCover = document.createElement("td");
+
+    // Edit Button
+    let editButton = document.createElement("button");
+    editButton.className = "btn btn-warning btn-sm me-2"; // Small button with margin
+    editButton.textContent = "Edit";
+    editButton.onclick = () => openUpdateStaffModal(s.customerId, s.customerName, s.customerProfile, s.contactNo, s.email, s.customerAddress);
+
+    // Delete Button
+    let deleteButton = document.createElement("button");
+    deleteButton.className = "btn btn-danger btn-sm"; // Small red button
+    deleteButton.textContent = "Delete";
+    deleteButton.onclick = () => deleteStaffById(s.customerId);
+
+    // Append both buttons to the button cover
+    buttonCover.appendChild(editButton);
+    buttonCover.appendChild(deleteButton);
+
+    // Append everything to the row
+    tr.appendChild(customerId);
+    tr.appendChild(customerProfileCover);
+    tr.appendChild(customerName);
+    tr.appendChild(contactNo);
+    tr.appendChild(email);
+    tr.appendChild(customerAddress);
+    tr.appendChild(roleType);
+    tr.appendChild(buttonCover);
+
+    staffTableBody.appendChild(tr);
+  });
+});
+
+
+// Fetch customers and display in the tabl
+
 // Fetch customers and display in the table
 fetch("http://localhost:8080/api/view-all-customers-by-role?roleType=USER")
   .then((response) => response.json())
@@ -379,3 +454,107 @@ function openUpdateCustomerModal(
       }
     });
   }
+
+
+
+  //staff add-update-delete
+
+
+// Open the Update Modal
+function openUpdateStaffModal(customerIdU, customerNameU, customerProfileU, contactNoU, emailU, customerAddressU) {
+    cid = customerIdU;
+    document.getElementById("staffName").value = customerNameU;
+    document.getElementById("staffContact").value = contactNoU;
+    document.getElementById("staffEmail").value = emailU;
+    document.getElementById("staffAddress").value = customerAddressU;
+    // Open the modal
+    $("#staffModal").modal("show");
+  }
+  
+  // Handle Submit for Add/Edit Staff
+  function submitStaffForm(event) {
+    event.preventDefault();
+  
+    const formData = new FormData();
+    formData.append("customerName", document.getElementById("staffName").value);
+    formData.append("email", document.getElementById("staffEmail").value);
+    formData.append("password", document.getElementById("staffPassword").value);
+    formData.append("customerProfile", document.getElementById("image").files[0]);
+    formData.append("contactNo", document.getElementById("staffContact").value);
+    formData.append("customerAddress", document.getElementById("staffAddress").value);
+    formData.append("roleType", "STAFF");
+  
+    const url = cid ? `http://localhost:8080/api/update-customer/${cid}` : `http://localhost:8080/api/create-customers`;
+    const method = cid ? "PUT" : "POST";
+  
+    fetch(url, {
+      method: method,
+      body: formData,
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Staff member has been saved successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => location.reload());
+    })
+    .catch(() => {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Failed to save the staff member. Please try again.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+  
+    // Close the modal
+    $('#staffModal').modal('hide');
+  }
+  
+  // Delete Staff Member
+  function deleteStaffById(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "This action will permanently delete the staff member!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:8080/api/delete-customer/${id}`, {
+          method: "DELETE",
+        })
+        .then((response) => {
+          if (response.ok) {
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'The staff member has been deleted successfully.',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            }).then(() => location.reload());
+          } else {
+            Swal.fire({
+              title: 'Error!',
+              text: 'Failed to delete the staff member.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          }
+        })
+        .catch(() => {
+          Swal.fire({
+            title: 'Error!',
+            text: 'An error occurred. Please try again.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        });
+      }
+    });
+  }
+  

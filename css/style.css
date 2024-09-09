@@ -952,18 +952,25 @@ header.sticky{
     height: 100px;
 }
 
-button {
+.btnbook{
+    background-color: var(--main-color);
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* button {
     background-color: var(--main-color);
     color: #fff;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     font-size: 18px;
-}
-
+} */
+/* 
 button:hover {
     background-color: var(#c45377d5);
-}
+} */
 
 /* reservation */
 
@@ -1039,8 +1046,8 @@ button:hover {
 }
 
 /* Button styling */
-button[type="submit"] {
-    /* width: 100%; */
+/* button[type="submit"] {
+    width: 100%;
     padding: 15px;
     background-color: var(--main-color);
     color: #fff;
@@ -1048,11 +1055,11 @@ button[type="submit"] {
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+} */
 
-button[type="submit"]:hover {
+/* button[type="submit"]:hover {
     background-color: var(--main-color);
-}
+} */
 
 /* register */
 
