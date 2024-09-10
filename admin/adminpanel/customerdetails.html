@@ -10,7 +10,8 @@
     <script defer src ="/js/adminpanel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        body {
+    
+    body{
             font-family: 'Nunito', sans-serif;
             background-color: #f4f7f6;
             color: #2e4053;
@@ -41,22 +42,11 @@
 
         .sidebar .nav-link {
             color: white;
-            padding: 10px;
-            margin: 1px 0 0;
+            padding: 15px 0 15px 10px;
+            margin: 10px 0 0;
             display: block;
             border-radius: 30px;
-            text-align: center;
-        }
-
-        .sidebar .nav-link1 {
-            color: white;
-            padding: 15px;
-            margin-top: -26px;
-            display: block;
-            border-radius: 30px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
+            text-align: left;
         }
 
         .sidebar .nav-link.active {
@@ -238,24 +228,18 @@
 </head>
 
 <body>
-                <!-- Sidebar -->
-                <div class="sidebar">
+                 <!-- Sidebar -->
+                 <div class="sidebar">
                     <div class="sidebar-header">A B C</div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <p class="nav-link1" href="#">Dashboard</p>
+                            <a class="nav-link" href="dashboard.html">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Book A Table List</a>
+                            <a class="nav-link" href="tableBook.html">Book A Table List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Order List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Service List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Product List</a>
+                            <a class="nav-link" href="orderdetails.html">Order List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="staff.html">Staff List</a>
@@ -263,12 +247,11 @@
                         <li class="nav-item"></li>
                             <a class="nav-link active" href="customer.html">Customer List</a>
                         </li>
-                        
                         <li class="nav-item">
                             <a class="nav-link" href="Menu.html">Menu List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Settings</a>
+                            <a class="nav-link" href="Feedback.html">Customere Feedback</a>
                         </li>
                     </ul>
                 </div>

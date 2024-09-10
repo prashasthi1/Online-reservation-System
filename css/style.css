@@ -699,7 +699,7 @@ header.sticky{
     outline: none;
 }
 
-/* .search-button {
+.search-button {
     padding: 5px 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -707,8 +707,13 @@ header.sticky{
     background-color: var(--main-color);
     color: white;
     cursor: pointer;
-} */
+}
 
+.search-results{
+    color: var(--text-color);
+    text-align: center;
+    font-size: 18px;
+}
 
 .search-button:hover {
     background-color: #333;
@@ -1060,112 +1065,6 @@ button:hover {
 /* button[type="submit"]:hover {
     background-color: var(--main-color);
 } */
-
-/* register */
-
-.register-box {
-    width: 1100px; 
-    margin: 100px auto; 
-    background-color: rgba(255, 255, 255, 0.546); 
-    display: flex;
-    justify-content: center;
-    min-height: 10vh;
-   
-}
-
-.register-box #back{
-    display: flex;
-    align-items: center;
-    background: var(--main-color);;
-    margin: 5px;
-    
-}
-
-#back{
-    color: #fff;
-    font-size: var(--p-font);
-    padding: 8px 15px;;
-    margin-bottom: 200px;
-}
-
-.register-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px; 
-}
-
-.register-box img{
-    height: 500px;
-    width: 500px;
-    /* margin: 20px */
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1px; 
-    justify-content: center;
-   
-}
-
-.ex1 {
-    margin: 20px;
-    text-align:center; 
-    color: #000000; 
-   }
-
-.input-container {
-    display: -ms-flexbox; 
-    display: flex;
-    width: 500px;
-    margin-bottom: 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-   
-  }
-
-  .input-container i{
-    padding: 10px;
-  color: rgb(0, 0, 0);
-  text-align: center;;
-  margin-right: 3px;
-  
-  }
-
-
-  .input-field {
-    width: 70%;
-    padding: 10px;
-    outline: none;
-    
-  }
-
-  .btn1 {
-    background-color: var(--main-color);
-    color: rgb(0, 0, 0);
-    padding: 15px 20px;;
-    cursor: pointer;
-    width: 30%;
-    opacity: 0.9;
-    margin-left: 180px;
-    align-items: center;
-    text-align: center;
-    border-radius: 5px;
-  
-  }
- 
-  
-  .btn1:hover {
-    opacity: 1;
-  }
-
-  .ex3 {
-    padding: 15px 20px ;
-    text-align: center;
-  }
-
-  
 
   @media (max-width: 1545px){
     header{

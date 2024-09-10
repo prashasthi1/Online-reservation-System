@@ -87,7 +87,7 @@ document.getElementById("btnBookTable").addEventListener("click", async () => {
 
 
 function validateEmail(email) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@(gmail\.com|hotmail\.com)$/;
     return emailPattern.test(email);
 }
 

@@ -13,6 +13,64 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-input');
+    const searchResults = document.getElementById('search-results');
+
+    // Store menu items for easier access
+    const menuItems = {
+        food: Array.from(document.querySelectorAll('.food-menu .food-item')),
+        dessert: Array.from(document.querySelectorAll('.dessert-menu .food-item')),
+        beverage: Array.from(document.querySelectorAll('.beverage .food-item'))
+    };
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        searchResults.innerHTML = ''; // Clear previous results
+
+        if (query === '') return;
+
+        // Filter and display results
+        ['food', 'dessert', 'beverage'].forEach(category => {
+            menuItems[category].forEach((item, index) => {
+                const itemName = item.querySelector('h3').textContent.toLowerCase();
+                if (itemName.includes(query)) {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.dataset.category = category;
+                    resultItem.dataset.index = index;
+                    resultItem.innerHTML = `
+                        <a href="#">
+                            <span>${itemName} - ${item.querySelector('.price').textContent}</span>
+                        </a>
+                    `;
+                    searchResults.appendChild(resultItem);
+                }
+            });
+        });
+
+        // Add click event listener to results
+        document.querySelectorAll('.search-result-item').forEach(result => {
+            result.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = result.dataset.category;
+                const index = result.dataset.index;
+                const item = menuItems[category][index];
+
+                // Scroll to the item
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Optionally, add a highlight to the item
+                item.style.border = '2px solid #007BFF'; // Highlight the item
+                setTimeout(() => item.style.border = '', 2000); // Remove highlight after 2 seconds
+            });
+        });
+    });
+});
+
+    </script>
 </head>
 <body>
 
@@ -70,6 +128,7 @@
                         <input type="text" placeholder="Search..." class="search-input">
                         <button type="submit" class="search-button"><i class='bx bx-search-alt-2' ></i></button>
                     </form>
+                    <div id="search-results" class="search-results"></div>
                 </li>
              </ul>
         </div>
