@@ -594,6 +594,9 @@ function openUpdateStaffModal(customerIdU, customerNameU, customerProfileU, cont
                       // Message column
                       let message = document.createElement("td");
                       message.textContent = t.message;
+
+                    
+
   
                       // Status column
                       let status = document.createElement("td");

@@ -52,7 +52,7 @@ document.getElementById("btnlog").addEventListener("click", () => {
         Swal.fire({
           icon: "error",
           title: "Login Unsuccessful",
-          text: "Network error occurred. Please try again later.",
+          text: "Incorrect Password or Email. Please try again later.",
         });
       });
   });

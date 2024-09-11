@@ -83,11 +83,6 @@
             transition: all 0.3s;
         }
 
-        .btn.show{
-            background-color: #375095;
-            border-color: #375095;
-        }
-
         .main-content {
             margin-left: 250px;
             padding: 30px;
@@ -98,18 +93,16 @@
             display: flex;
             justify-content: space-between;
             margin-top: 60px;
-            margin-left: 100px;
-            margin-right: 100px;
         }
 
         .card {
             background-color: white;
             border-radius: 10px;
             padding-top: 30px;
-            width: 30%;
+            width: 22%;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            gap: 10px;
+            gap: 5px;
         }
 
         .card span {
@@ -136,7 +129,7 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            margin-left: 0;
+            margin-left: -31px;
         }
 
         /* Modal Styles */
@@ -260,25 +253,25 @@
         <div class="sidebar-header">A B C</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="../admin/admindashboard.html">Dashboard</a>
+                <a class="nav-link active" href="dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../admin/adminpanel/tablebookingdetails.html">Book A Table List</a>
+                <a class="nav-link" href="tableBook.html">Book A Table List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../admin/adminpanel/orderdetails.html">Order List</a>
+                <a class="nav-link" href="orderdetails.html">Order List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../admin/adminpanel/staffdetails.html">Staff List</a>
+                <a class="nav-link" href="staff.html">Staff List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../admin/adminpanel/customerdetails.html">Customer List</a>
+                <a class="nav-link" href="customer.html">Customer List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../admin/adminpanel/menudetails.html">Menu List</a>
+                <a class="nav-link" href="Menu.html">Menu List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../admin/adminpanel/customersfeedback.html">Customer Feedback</a>
+                <a class="nav-link" href="Feedback.html">Customer Feedback</a>
             </li>
         </ul>
     </div>
@@ -305,23 +298,22 @@
         </div>
         <div class="cards">
             <div class="card">
-                <span><img src="../img/1.png"></span>
-                <h3>Total Booking pending</h3>
-                <p id="p_count">75</p>
+                <span><img src="img/1.png"></span>
+                <h3>Total Orders</h3>
+                <p>75</p>
             </div>
             <div class="card">
-                <span><img src="../img/3.png"></span>
-                <h3>Table booking verify</h3>
-                <p id="vcount">65</p>
+                <span><img src="img/2.png"></span>
+                <h3>Total Delivered</h3>
+                <p>357</p>
             </div>
             <div class="card">
-                <span><img src="../img/2.png"></span>
-                <h3>Total Registed Customer</h3>
-                <p id="c_count">357</p>
+                <span><img src="img/3.png"></span>
+                <h3>Total Canceled</h3>
+                <p>65</p>
             </div>
-            
             <div class="card">
-                <span><img src="../img/4.png"></span>
+                <span><img src="img/4.png"></span>
                 <h3>Total Revenue</h3>
                 <p>$128</p>
             </div>
@@ -370,8 +362,6 @@
         &copy; 2024 ABC Restaurant. All rights reserved.
     </div>
 
-   
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Function to open profile modal
@@ -399,50 +389,6 @@
             }
         };
     </script>
-
-<script>
-    let count1 = 0;
-    let count2 = 0;
-    let count3 = 0;
-    document.addEventListener("DOMContentLoaded", () => {
-    fetch("http://localhost:8080/api/view-all-customers-by-role?roleType=USER")
-      .then((response) => response.json())
-      .then((data) => {
-        data.map(() => {
-          count1++;
-        });
-        document.getElementById("c_count").innerText = count1;
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-
-      fetch("http://localhost:8080/api/restauranttablebook/view-tablebooking-by-status?status=PENDING")
-          .then((response) => response.json())
-          .then((data) => {
-            data.map(() => {
-              count2++;
-            });
-            document.getElementById("p_count").innerText = count2;
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-          });
-
-          fetch("http://localhost:8080/api/restauranttablebook/view-tablebooking-by-status?status=Verified")
-          .then((response) => response.json())
-          .then((data) => {
-            data.map(() => {
-              count3++;
-            });
-            alert(vcount);
-            document.getElementById("vcount").innerText = count3;
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-          });
-    })
-</script>
 </body>
 
 </html>

@@ -1,28 +1,28 @@
-// const header = document.querySelector("header");
+const header = document.querySelector("header");
 
-// window.addEventListener("scroll", function() {
-//     header.classList.toggle("sticky", window.scrollY > 80);    
-// });
+window.addEventListener("scroll", function() {
+    header.classList.toggle("sticky", window.scrollY > 80);    
+});
 
-// let menu = document.querySelector('#menu-icon');
-// let navlist = document.querySelector('.navlist');
+let menu = document.querySelector('#menu-icon');
+let navlist = document.querySelector('.navlist');
 
-// menu.onclick = () => {
-//     menu.classList.toggle('bx-x');
-//     navlist.classList.toggle('open');
-// };
+menu.onclick = () => {
+    menu.classList.toggle('bx-x');
+    navlist.classList.toggle('open');
+};
 
-// window.onscroll = () => {
-//     menu.classList.remove('bx-x');
-//     navlist.classList.remove('open');
-// };
+window.onscroll = () => {
+    menu.classList.remove('bx-x');
+    navlist.classList.remove('open');
+};
 
-// const sr = ScrollReveal({
-//     origin: 'top',
-//     distance: '85px',
-//     duration: 2500,
-//     reset: true
-// })
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '85px',
+    duration: 2500,
+    reset: true
+})
 
 // document.addEventListener("DOMContentLoaded", function() {
 //     var modal = document.getElementById("modal");
@@ -68,95 +68,95 @@
 
 // //cart
 
-// document.querySelectorAll('.add-to-cart, .m-nav-icons1').forEach(button => {
-//     button.addEventListener('click', function() {
-//         addToCart(this.parentElement);
-//     });
+document.querySelectorAll('.add-to-cart, .m-nav-icons1').forEach(button => {
+    button.addEventListener('click', function() {
+        addToCart(this.parentElement);
+    });
+});
+
+function addToCart(foodItem) {
+    const cartSidebar = document.getElementById('cart-sidebar');
+    cartSidebar.classList.add('open');
+    const cartItems = document.getElementById('cart-items');
+    const itemName = foodItem.querySelector('h3').innerText;
+    const itemPrice = foodItem.querySelector('.price').innerText;
+
+    const cartItem = document.createElement('li');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `<span>(1x) ${itemName}</span><span>${itemPrice}</span><button class="remove-item">Delete</button>`;
+    cartItems.appendChild(cartItem);
+
+    console.log('Item added to cart:', cartItem);  
+
+    const removeButton = cartItem.querySelector('.remove-item');
+    removeButton.addEventListener('click', function() {
+        console.log('Delete button clicked');
+        cartItem.remove();
+        updateTotal();
+    });
+}
+
+function updateTotal() {
+    const cartItems = document.querySelectorAll('.cart-item');
+    let total = 0;
+    cartItems.forEach(item => {
+        const price = parseFloat(item.querySelector('span:last-child').innerText.substring(1));
+        total += price;
+    });
+    document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
+}
+
+// Close cart sidebar
+document.querySelector('.bx-x-circle').addEventListener('click', function() {
+    document.getElementById('cart-sidebar').classList.remove('open');
+});
+
+
+
+//reservation
+
+// document.getElementById('reservationForm').addEventListener('submit', function(event) {
+//     // alert("prasha");
+//     event.preventDefault();
+
+//     // Get form values
+//     const name = document.getElementById('name').value.trim();
+//     const email = document.getElementById('email').value.trim();
+//     const datetime = document.getElementById('datetime').value.trim();
+//     const people = document.getElementById('people').value.trim();
+
+//     // Validation
+//     if (name === '') {
+//         Swal.fire('Validation Error', 'Please enter your name.', 'error');
+//         return;
+//     }
+
+//     if (email === '') {
+//         Swal.fire('Validation Error', 'Please enter your email.', 'error');
+//         return;
+//     }
+
+//     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+//     if (!emailPattern.test(email)) {
+//         Swal.fire('Validation Error', 'Please enter a valid email address.', 'error');
+//         return;
+//     }
+
+//     if (datetime === '') {
+//         Swal.fire('Validation Error', 'Please select a date and time.', 'error');
+//         return;
+//     }
+
+//     if (people === '' || isNaN(people) || parseInt(people) <= 0) {
+//         Swal.fire('Validation Error', 'Please enter a valid number of people.', 'error');
+//         return;
+//     }
+
+//     // If all validation passes
+//     Swal.fire('Success', 'Your reservation has been successfully submitted!', 'success');
 // });
 
-// function addToCart(foodItem) {
-//     const cartSidebar = document.getElementById('cart-sidebar');
-//     cartSidebar.classList.add('open');
-//     const cartItems = document.getElementById('cart-items');
-//     const itemName = foodItem.querySelector('h3').innerText;
-//     const itemPrice = foodItem.querySelector('.price').innerText;
-
-//     const cartItem = document.createElement('li');
-//     cartItem.classList.add('cart-item');
-//     cartItem.innerHTML = `<span>(1x) ${itemName}</span><span>${itemPrice}</span><button class="remove-item">Delete</button>`;
-//     cartItems.appendChild(cartItem);
-
-//     console.log('Item added to cart:', cartItem);  
-
-//     const removeButton = cartItem.querySelector('.remove-item');
-//     removeButton.addEventListener('click', function() {
-//         console.log('Delete button clicked');
-//         cartItem.remove();
-//         updateTotal();
-//     });
-// }
-
-// function updateTotal() {
-//     const cartItems = document.querySelectorAll('.cart-item');
-//     let total = 0;
-//     cartItems.forEach(item => {
-//         const price = parseFloat(item.querySelector('span:last-child').innerText.substring(1));
-//         total += price;
-//     });
-//     document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
-// }
-
-// // Close cart sidebar
-// document.querySelector('.bx-x-circle').addEventListener('click', function() {
-//     document.getElementById('cart-sidebar').classList.remove('open');
-// });
-
-
-
-// //reservation
-
-// // document.getElementById('reservationForm').addEventListener('submit', function(event) {
-// //     // alert("prasha");
-// //     event.preventDefault();
-
-// //     // Get form values
-// //     const name = document.getElementById('name').value.trim();
-// //     const email = document.getElementById('email').value.trim();
-// //     const datetime = document.getElementById('datetime').value.trim();
-// //     const people = document.getElementById('people').value.trim();
-
-// //     // Validation
-// //     if (name === '') {
-// //         Swal.fire('Validation Error', 'Please enter your name.', 'error');
-// //         return;
-// //     }
-
-// //     if (email === '') {
-// //         Swal.fire('Validation Error', 'Please enter your email.', 'error');
-// //         return;
-// //     }
-
-// //     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-// //     if (!emailPattern.test(email)) {
-// //         Swal.fire('Validation Error', 'Please enter a valid email address.', 'error');
-// //         return;
-// //     }
-
-// //     if (datetime === '') {
-// //         Swal.fire('Validation Error', 'Please select a date and time.', 'error');
-// //         return;
-// //     }
-
-// //     if (people === '' || isNaN(people) || parseInt(people) <= 0) {
-// //         Swal.fire('Validation Error', 'Please enter a valid number of people.', 'error');
-// //         return;
-// //     }
-
-// //     // If all validation passes
-// //     Swal.fire('Success', 'Your reservation has been successfully submitted!', 'success');
-// // });
-
-// // login
+// login
 
 // document.addEventListener('DOMContentLoaded', function() {
 //     const form = document.querySelector('form');

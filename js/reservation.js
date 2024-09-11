@@ -159,62 +159,62 @@ document.getElementById("contactForm").addEventListener("submit", (event) => {
 
   
   
-document.addEventListener("DOMContentLoaded", () => {
-    // Fetch the feedback data from the API
-    fetch("http://localhost:8080/api/feedback/view-all-customer-feedback")
-        .then((response) => response.json())
-        .then((data) => {
-            // Get the review content container
-            const reviewContent = document.getElementById("reviewContent");
+// document.addEventListener("DOMContentLoaded", () => {
+//     // Fetch the feedback data from the API
+//     fetch("http://localhost:8080/api/feedback/view-all-customer-feedback")
+//         .then((response) => response.json())
+//         .then((data) => {
+//             // Get the review content container
+//             const reviewContent = document.getElementById("reviewContent");
 
-            // Check if data exists
-            if (data.length > 0) {
-                // Loop through the feedback data
-                data.forEach((feedback) => {
-                    // Create a new div element for each feedback
-                    const reviewBox = document.createElement("div");
-                    reviewBox.classList.add("box");
+//             // Check if data exists
+//             if (data.length > 0) {
+//                 // Loop through the feedback data
+//                 data.forEach((feedback) => {
+//                     // Create a new div element for each feedback
+//                     const reviewBox = document.createElement("div");
+//                     reviewBox.classList.add("box");
 
-                    // Populate the review box with the feedback data
-                    reviewBox.innerHTML = `
-                        <p>${feedback.message}</p>
-                        <div class="in-box">
-                            <div class="bx-img">
-                                <img src="${feedback.image}" alt="Customer image">
-                            </div>
-                            <div class="bxx-text">
-                                <h4>${feedback.customerName}</h4>
-                                <h5>${feedback.profession}</h5>
-                                <div class="ratings">
-                                    ${generateStars(feedback.rating)}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    // Append the review box to the review content container
-                    reviewContent.appendChild(reviewBox);
-                });
-            } else {
-                // If no feedback is available, show a message
-                reviewContent.innerHTML = "<p>No feedback available at the moment.</p>";
-            }
-        })
-        .catch((error) => {
-            console.error("Error fetching feedback:", error);
-            document.getElementById("reviewContent").innerHTML = "<p>Failed to load feedback.</p>";
-        });
-});
+//                     // Populate the review box with the feedback data
+//                     reviewBox.innerHTML = `
+//                         <p>${feedback.message}</p>
+//                         <div class="in-box">
+//                             <div class="bx-img">
+//                                 <img src="${feedback.image}" alt="Customer image">
+//                             </div>
+//                             <div class="bxx-text">
+//                                 <h4>${feedback.customerName}</h4>
+//                                 <h5>${feedback.profession}</h5>
+//                                 <div class="ratings">
+//                                     ${generateStars(feedback.rating)}
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     `;
+//                     // Append the review box to the review content container
+//                     reviewContent.appendChild(reviewBox);
+//                 });
+//             } else {
+//                 // If no feedback is available, show a message
+//                 reviewContent.innerHTML = "<p>No feedback available at the moment.</p>";
+//             }
+//         })
+//         .catch((error) => {
+//             console.error("Error fetching feedback:", error);
+//             document.getElementById("reviewContent").innerHTML = "<p>Failed to load feedback.</p>";
+//         });
+// });
 
-// Function to generate star ratings based on customer rating
-function generateStars(rating) {
-    let stars = "";
-    for (let i = 1; i <= 5; i++) {
-        if (i <= rating) {
-            stars += `<i class='bx bxs-star'></i>`; // Filled star
-        } else {
-            stars += `<i class='bx bx-star'></i>`; // Unfilled star
-        }
-    }
-    return stars;
-}
+// // Function to generate star ratings based on customer rating
+// function generateStars(rating) {
+//     let stars = "";
+//     for (let i = 1; i <= 5; i++) {
+//         if (i <= rating) {
+//             stars += `<i class='bx bxs-star'></i>`; // Filled star
+//         } else {
+//             stars += `<i class='bx bx-star'></i>`; // Unfilled star
+//         }
+//     }
+//     return stars;
+// }
   
