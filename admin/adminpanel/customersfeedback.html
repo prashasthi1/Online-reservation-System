@@ -155,6 +155,19 @@
             margin-left: 100px;  
         }
     </style>
+    <script>
+        console.log(sessionStorage.getItem("cid"));
+        sessionStorage.getItem("cid") != null
+          ? (window.location.href = "#")
+          : (window.location.href = "../../login.html");
+    
+        function logout() {
+          sessionStorage.removeItem("cid");
+          sessionStorage.clear();
+          window.location.href = "../../login.html";
+         
+        }
+      </script>
 </head>
 
 <body>

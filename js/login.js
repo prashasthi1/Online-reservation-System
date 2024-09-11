@@ -27,7 +27,7 @@ document.getElementById("btnlog").addEventListener("click", () => {
               title: "Login Successful",
               text: "Welcome, Staff Dashboard!..",
             }).then(() => {
-              window.location.href = "staff/DashBoard.html";
+              window.location.href = "Staff/staffdashboard.html";
             });
         }else if (data.roleType === "USER") {
             Swal.fire({
@@ -35,9 +35,9 @@ document.getElementById("btnlog").addEventListener("click", () => {
               title: "Login Successful",
               text: "Welcome, ABC Restaurant!..",
         })
-            // .then(() => {
-            //   window.location.href = "staff/DashBoard.html";
-            // });
+            .then(() => {
+              window.location.href = "Home.html";
+            });
             
           }
         } else {

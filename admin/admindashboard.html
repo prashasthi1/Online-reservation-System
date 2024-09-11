@@ -252,6 +252,19 @@
             border-radius: 50%;
         }
     </style>
+    <script>
+        console.log(sessionStorage.getItem("cid"));
+        sessionStorage.getItem("cid") != null
+          ? (window.location.href = "#")
+          : (window.location.href = "../../login.html");
+    
+        function logout() {
+          sessionStorage.removeItem("cid");
+          sessionStorage.clear();
+          window.location.href = "../../login.html";
+         
+        }
+      </script>
 </head>
 
 <body>
@@ -320,11 +333,6 @@
                 <p id="c_count">357</p>
             </div>
             
-            <div class="card">
-                <span><img src="../img/4.png"></span>
-                <h3>Total Revenue</h3>
-                <p>$128</p>
-            </div>
         </div>
     </div>
 
@@ -387,7 +395,7 @@
         // Function to validate and submit form
         function validateForm(event) {
             event.preventDefault();
-            alert("Profile updated successfully!");
+            // alert("Profile updated successfully!");
             closeProfile();
         }
 
@@ -435,7 +443,7 @@
             data.map(() => {
               count3++;
             });
-            alert(vcount);
+            // alert(vcount);
             document.getElementById("vcount").innerText = count3;
           })
           .catch((error) => {
