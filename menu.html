@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+   
+
+    <!-- box icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-input');
+    const searchResults = document.getElementById('search-results');
+
+    // Store menu items for easier access
+    const menuItems = {
+        food: Array.from(document.querySelectorAll('.food-menu .food-item')),
+        dessert: Array.from(document.querySelectorAll('.dessert-menu .food-item')),
+        beverage: Array.from(document.querySelectorAll('.beverage .food-item'))
+    };
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        searchResults.innerHTML = ''; // Clear previous results
+
+        if (query === '') return;
+
+        // Filter and display results
+        ['food', 'dessert', 'beverage'].forEach(category => {
+            menuItems[category].forEach((item, index) => {
+                const itemName = item.querySelector('h3').textContent.toLowerCase();
+                if (itemName.includes(query)) {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.dataset.category = category;
+                    resultItem.dataset.index = index;
+                    resultItem.innerHTML = `
+                        <a href="#">
+                            <span>${itemName} - ${item.querySelector('.price').textContent}</span>
+                        </a>
+                    `;
+                    searchResults.appendChild(resultItem);
+                }
+            });
+        });
+
+        // Add click event listener to results
+        document.querySelectorAll('.search-result-item').forEach(result => {
+            result.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = result.dataset.category;
+                const index = result.dataset.index;
+                const item = menuItems[category][index];
+
+                // Scroll to the item
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Optionally, add a highlight to the item
+                item.style.border = '2px solid #007BFF'; // Highlight the item
+                setTimeout(() => item.style.border = '', 2000); // Remove highlight after 2 seconds
+            });
+        });
+    });
+});
+
+    </script>
+</head>
+<body>
+
+    <!-- header -->
+     <header>
+        <img src="img/logo.png" class="logo">
+         <ul class="navlist">
+            <li><a href="Home.html">HOME</a></li>
+            <li><a href="Home.html#about">ABOUT </a></li>
+            <li><a href="Home.html#service">SERVICES </a></li>
+            <li><a href="menu.html"  class="active">MENU</a></li>
+            <li><a href="Home.html#offer">OFFERS</a></li>
+            <li><a href="Home.html#gallery">GALLERY</a></li>
+            <li><a href="Home.html#reservation">RESERVATION</a></li>
+            <li><a href="Home.html#staff">STAFF</a></li>
+            <li><a href="Home.html#contact">CONTACT</a></li>
+            <li><a href="Home.html#review">FEEDBACK</a></li>
+         </ul>
+        <div class="nav-icons">
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+        <div class="m-nav-icons1">
+            <a href=""><i class='bx bx-cart' id="cart" ></i></a>
+            <span>0</span>
+        </div>
+
+        <div class="m-nav-icons">
+            <a href="login.html" class="login">Login</a>
+        </div>
+
+        <div class="m-nav-icons">
+            <a href="register.html" class="login">Signup</a>
+        </div>
+
+     </header>
+
+          <!-- Home -->
+
+          <section>
+                <img src="img/menu-hero.jpg" alt="Hero Image" class="gallery-image">
+                 <div class="menu-text">
+                    <h1>Savor Our Dishes</h1>
+                </div>
+            
+          </section> 
+
+          <section>
+            <ul class="menu-navlist">
+                <li><a href="#food" class="active">FOOD </a></li>
+                <li><a href="#dessert">DESSERT </a></li>
+                <li><a href="#beverage">BEVERAGE</a></li>
+                <li>
+                    <form class="search-form">    
+                        <input type="text" placeholder="Search..." class="search-input">
+                        <button type="submit" class="search-button"><i class='bx bx-search-alt-2' ></i></button>
+                    </form>
+                    <div id="search-results" class="search-results"></div>
+                </li>
+             </ul>
+        </div>
+      </section>
+
+    <section class="food-menu" id="food">
+        <div class="sec-menu">
+            <div class="middle-text">
+                <h4>FOOD</h4>
+            </div>
+            <div class="shop-content1" id="menuContainer">
+                <!-- Dynamic content will be injected here -->
+              </div>
+              
+              <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                  // Fetch menu items from your API
+                  fetch("http://localhost:8080/api/menu/view-all-menu")
+                    .then((response) => response.json())
+                    .then((data) => {
+                      const menuContainer = document.getElementById("menuContainer");
+                      menuContainer.innerHTML = ''; // Clear existing content
+                
+                      data.forEach((item) => {
+                        // Create a div for the food item
+                        const foodItemDiv = document.createElement("div");
+                        foodItemDiv.className = "food-item";
+                        
+                        // Create the image element
+                        const img = document.createElement("img");
+                        img.src = `data:image/png;base64,${item.mealImage}`;
+                        foodItemDiv.appendChild(img);
+                
+                        // Create the food name element
+                        const foodName = document.createElement("h3");
+                        foodName.textContent = item.mealName;
+                        foodItemDiv.appendChild(foodName);
+                       
+                        // Create the price element
+                        const price = document.createElement("h6");
+                        price.className = "price";
+                        price.textContent = `$${(item.mealPrice / 100).toFixed(2)}`; // Convert price to a dollar format
+                        foodItemDiv.appendChild(price);
+                       
+                        // Create the "Add to Cart" button
+                        const addToCartDiv = document.createElement("div");
+                        addToCartDiv.className = "add-to-cart";
+                        const addToCartLink = document.createElement("a");
+                        addToCartLink.href = "#";
+                        addToCartLink.innerHTML = "<i class='bx bx-plus-circle'></i>";
+                        addToCartDiv.appendChild(addToCartLink);
+                        foodItemDiv.appendChild(addToCartDiv);
+                        
+                        // Append the food item to the menu container
+                        menuContainer.appendChild(foodItemDiv);
+                      });
+                    })
+                    .catch((error) => {
+                      console.error("Error fetching menu data:", error);
+                      alert("Error fetching menu data.");
+                    });
+              });
+              </script>
+              
+
+            <!-- <div class="shop-content1" id="menuContainer">
+                <div class="food-item">
+                    <img src="img/menu/mf1.jpg">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf2.jpg">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf3.png">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf4.jpg">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf5.png">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf6.png">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf7.jpg">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf8.png">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf9.png">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mf10.jpg">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+            
+                <div class="food-item">
+                    <img src="img/menu/mf8.png">
+                    <h3>Chicken Soup</h3>
+                    <h6 class="price">$21.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div> 
+            </div> 
+        </div> -->
+    </section>
+
+    <!-- desserts -->
+
+    <section class="dessert-menu" id="dessert">
+        <div class="sec-menu">
+            <div class="middle-text">
+                <h4>DESSERTS</h4>
+            </div>
+
+            <div class="shop-content1">
+                <div class="food-item">
+                    <img src="img/menu/md1.png">
+                    <h3>Jar Cake</h3>
+                    <h6 class="price">$10.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/md2.png">
+                    <h3>Cup Cake</h3>
+                    <h6 class="price">$8.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/md3.png">
+                    <h3>Vanila Ice Cream</h3>
+                    <h6 class="price">$5.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/md4.png">
+                    <h3>Jar Cake</h3>
+                    <h6 class="price">$5.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/md5.jpg">
+                    <h3>Vanila & Chocolot</h3>
+                    <h6 class="price">$8.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/md6.jpg">
+                    <h3>Paineapple Pudin</h3>
+                    <h6 class="price">$5.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/md7.jpg">
+                    <h3>Maffin</h3>
+                    <h6 class="price">$4.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/md8.jpg">
+                    <h3>Butterscoch </h3>
+                    <h6 class="price">.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+            </div>    
+        </div>
+    </section>
+
+    <!-- beverage -->
+    <section class="food-menu" id="beverage">
+        <div class="sec-menu">
+            <div class="middle-text">
+                <h4>BEVERAGE</h4>
+            </div>
+
+            <div class="shop-content1">
+                    <div class="food-item">
+                        <img src="img/menu/mb1.png">
+                        <h3>Watermelon</h3>
+                        <h6 class="price">$7.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                    </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mb2.png">
+                    <h3>Avacado</h3>
+                    <h6 class="price">$8.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mb3.png">
+                    <h3>Papaya</h3>
+                    <h6 class="price">$5.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mb4.png">
+                    <h3>Graphs</h3>
+                    <h6 class="price">$11.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mb5.png">
+                    <h3>Tomato</h3>
+                    <h6 class="price">$5.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mb6.png">
+                    <h3>Orenge juice</h3>
+                    <h6 class="price">$5.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">
+                    <img src="img/menu/mb7.png">
+                    <h3>Lime</h3>
+                    <h6 class="price">$4.00</h6>
+                        <div class="add-to-cart">
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+
+                <div class="food-item">      
+                    <img src="img/menu/mb8.png">  
+                    <h3>Falood</h3>
+                    <h6 class="price">$7.00</h6>   
+                        <div class="add-to-cart">    
+                            <a href="#"><i class='bx bx-plus-circle' ></i></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+     
+
+          
+
+        <!-- Cart Sidebar -->
+         
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="close">
+            <i class='bx bx-x-circle'></i>
+            <h3>My Cart</h3>
+            <ul class="cart-items" id="cart-items">
+            </ul>
+            <div class="cart-total" id="cart-total">
+                Total: $0.00
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+<!-- <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul id="cart-items" class="list-group mb-3"></ul>
+          <div class="cart-total">
+            <strong>Total:</strong> <span id="cart-total-price">0</span>$
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="contact-content">
+    
+                <div class="contact-text">
+                    <h2>Contact Us</h2>
+                    <p>Over its history as a food, the main uses of honey are in cooking,
+                        baking, desserts, as a spresd on bread, as an addition to various beverages 
+                        such as tea, and as a sweetener in some commercial beverages</p>
+                        <div class="social">
+                            <a href="#" class="clr"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-facebook' ></i></a>
+                            <a href="#"><i class='bx bxl-twitter' ></i></a>
+                            <a href="#"><i class='bx bxl-google' ></i></a>
+                        </div>
+                </div>
+    
+             <div class="details">
+                <div class="main-d">
+                    <a href="#"><i class='bx bxs-map' ></i>Main street, 11/A, Colombo 7.</a>
+                </div>
+    
+                <div class="main-d">
+                    <a href="#"><i class='bx bxs-phone' ></i>(+94) 77 345 6789</a>
+                </div>
+    
+                <div class="main-d">
+                    <a href="#"><i class='bx bx-envelope' ></i>info@abcrestaurant.com</a>
+                </div>
+             </div>   
+            </div>
+         </section>
+     
+     <!-- scroll top -->
+      <a href="#" class="scroll"><i class='bx bx-up-arrow-alt' ></i></a>
+
+          <script src="https://unpkg.com/scrollreveal"></script>
+
+          <!-- link to js -->
+           <script src="js/script.js"></script>
+           <script src="/js/menu.js"></script>
+          
+    </body>
+</html>

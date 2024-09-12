@@ -1,2 +1,8 @@
 # Online-reservation-System
-Advance programing Java project
+
+Staff: username: Mayuri
+       password: 123456
+
+admin: username: kubi
+       password: 123456
+

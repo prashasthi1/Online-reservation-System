@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- box icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- link to js -->
+     <script defer src ="js/script.js"></script>
+     <script defer src ="js/reservation.js"></script>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- header -->
+     <header>
+        <img src="img/logo.png" class="logo">
+         <ul class="navlist">
+            <li><a href="#home" class="active">HOME</a></li>
+            <li><a href="#about">ABOUT </a></li>
+            <li><a href="#service">SERVICES </a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="#offer">OFFERS</a></li>
+            <li><a href="#gallery">GALLERY</a></li>
+            <li><a href="#reservation">RESERVATION</a></li>
+            <li><a href="#staff">STAFF</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="Home.html#review">FEEDBACK</a></li>
+         </ul>
+        <div class="nav-icons">
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+        <div class="nav-icons">
+                <a href="login.html" class="login">Login</a> 
+        </div>
+        <div class="nav-icons">
+                <a href="register.html" class="login">Signup</a> 
+        </div>
+
+     </header>
+
+     <!-- Home -->
+
+      <section class="home" id="home">
+        <div class="hero-container">
+            <img src="img/bg-hero2.jpg" alt="Hero Image" class="hero-image">
+            <div class="glass-overlay1"></div>
+            <div class="hero-text">
+                <h1>Meet, <span>Eat &</span> <br> Enjoy the True <br> Taste</h1>
+            </div>
+            <div class="hero-btn">
+                <a href="#reservation" class="btn">Book a Table<i class='bx bxs-right-arrow' ></i></a>
+                <div><a href="menu.html" class="btn2">Order Now</a></div> 
+            </div>
+        </div>
+      </section> 
+
+     <!-- container -->
+      <section class="container">
+        <div class="container-box">
+            <img src="img/d1.png">
+            <h3>9:00 am - 9:00 pm</h3>
+            <a href="#">Working Hours</a>
+        </div>
+        <div class="container-box">
+            <img src="img/d2.png">
+            <h3>ABC Restaurant</h3>
+            <a href="#">Get Directions</a>
+        </div>
+        <div class="container-box">
+            <img src="img/d3.png">
+            <h3>(+94) 12 345 6789</h3>
+            <a href="#">Call Us Now</a>
+        </div>
+      </section>
+
+      <!-- about us -->
+       <section class="about" id="about">
+        <div class="about-img">
+            <img src="img/about.png">
+        </div>
+
+        <div class="about-text">
+            <h2>Lining well begins <br> with eating well.</h2>
+            <p>ABC Restaurant is a popular dining chain in Sri Lanka, 
+                known for its diverse menu and welcoming atmosphere. We offer a mix of traditional 
+                Sri Lankan and international cuisines, all crafted with care and high-quality ingredients. 
+                Whether you're dining in, taking away, or ordering online, our goal is to provide a 
+                memorable experience.
+                    <br><br>
+                With our new online platform, customers can easily make reservations, 
+                explore our menu, and access special offers. At ABC Restaurant, we’re committed 
+                to great food, excellent service, and creating a space for everyone to enjoy.</p>
+            <a href="#" class="btn">Explore Story<i class='bx bxs-right-arrow' ></i></a>
+        </div>
+       </section>
+       
+
+       <!-- services -->
+      <section class="services-section" id="service">
+        <div class="middle-text">
+            <h2>EXPLORE OUR SERVICES</h2>
+        </div>
+
+        <div class="review-content">
+
+            <div class="box">
+                <div class="in-box1">
+                    <div class="bx-img2">
+                        <img src="img/s1.jpg">
+                    </div>
+                    <div class="bxx-text">
+                        <h4>Dine - in</h4>
+                    </div>
+                </div> 
+                <p>Enjoy a cozy and comfortable in-restaurant experience with a wide range of dishes and attentive service.</p>
+            </div>
+
+            <div class="box">
+                 <div class="in-box1">
+                     <div class="bx-img2">
+                         <img src="img/s2.jpg">
+                     </div>
+                     <div class="bxx-text">
+                         <h4>Delivery</h4>
+                     </div>
+                 </div> 
+                 <p>Get your favorite meals delivered straight to your door, fresh and hot, with just a few clicks..</p>
+             </div>
+
+             <div class="box">
+                 <div class="in-box1">
+                     <div class="bx-img2">
+                         <img src="img/s3.jpg">
+                     </div>
+                     <div class="bxx-text">
+                         <h4>Take away</h4>
+                     </div>
+                 </div> 
+                 <p>  Conveniently order ahead and pick up your food, perfect for those on the go.</p>
+             </div> 
+
+             <div class="box">
+                
+                 <div class="in-box1">
+                     <div class="bx-img2">
+                         <img src="img/s4.jpg">
+                     </div>
+                     <div class="bxx-text">
+                         <h4>24/7 Service</h4>
+                     </div>
+                 </div> 
+                 <p>Our round-the-clock service ensures you can satisfy your cravings anytime, day or night.</p>
+             </div> 
+        </div>
+    </section>
+
+       <!-- offer -->
+        <section class="offer" id="offer">
+            <div class="middle-text">
+                <h2>OFFER</h2>
+                <h4>Today's Special</h4>
+            </div>
+
+            <div class="shop-content">
+                <div class="row">
+                    <img src="img/offer.png"> 
+                    <img src="img/offer2.png">   
+                </div>
+            </div>
+                
+        </section>
+
+        <!-- gallery -->
+
+          <section class="gallery" id="gallery">
+            <div class="middle-text">
+                <h2>Gallery</h2>
+                <h4>Check out our snaps from the kitchen & Restaurant</h4>
+            </div>
+                <div class="gallery-row">
+                    <img src="img/gb1.jpg">
+                    <img src="img/gb2.jpg">
+                    <img src="img/gb3.jpg">
+                    <img src="img/gb4.jpg">
+                    <img src="img/gb5.png">
+                    <img src="img/gf1.jpg">
+                    <img src="img/gf2.jpg">
+                    <img src="img/gf3.jpg">
+                    <img src="img/gf4.jpg">
+                    <img src="img/gf5.jpg">
+                    <img src="img/gd1.jpg">
+                    <img src="img/gd2.jpg">
+                    <img src="img/gd3.jpg">
+                    <img src="img/gd4.jpg">
+                    <img src="img/gr1.jpg">
+                    <img src="img/gr3.jpg">
+                    <img src="img/gr4.jpg">
+                </div>
+          </section>
+
+          <!-- <div class="modal" id="modal">
+            <span class="close">&times;</span>
+            <img src="" id="modal-img">
+          </div> -->
+
+          <!-- reservation -->
+          <section class="reservation-container" id="reservation">
+            <h1>Reservation</h1>
+            <div class="reservation-cont">
+            <div class="reserv">
+            <div>
+                <h3>Book A Table Online</h3>
+            </div>
+            
+            <form class="form">
+                <div class="form-group">
+                    <input type="text" id="customer-name-table-booking" placeholder="Your Name" required/>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="table-booking-email"  placeholder="Your Email" required/>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="table-booking-person-count"  placeholder="No Of People"required/>
+                </div>
+                <div class="form-group">
+                    <input type="datetime-local" id="table-booking-dateTime" required />
+                </div>
+                <div class="form-group">
+                    <textarea id="table-booking-special-request"  placeholder="Special Request" required></textarea>
+                </div>
+                <button type="submit" class="btnbook" id="btnBookTable">BOOK NOW</button>
+              
+            </form>
+        </div>
+    </div>
+        </section>
+
+       <!-- staff -->
+       <section class="staff" id="staff">
+        <div class="middle-text">
+            <h2>OUR CHEFS</h2>
+            <p>One of Sri Lanka's most beloved restaurants, CityLand has been welcoming guests to Matara<br> for over two 
+                decades to enjoy contemporary local and foreign hospitality <br> and unparalleled service. 
+                Chef Montas Darwin's ever-evolving popular menu <br>showcases the restaurant's relationships with local farms and suppliers.</p>
+        </div>
+
+        <div class="review-content">
+
+            <div class="box">
+                <div class="in-box1">
+                    <div class="bx-img1">
+                        <img src="img/c1.png">
+                    </div>
+                    <div class="bxx-text">
+                        <h4>Mr.Montas Darwin</h4>
+                        <h5>Head Chef</h5>
+                        <div class="ratings">
+                            <a href="#"><i class='bx bxs-star' ></i></a>
+                            <a href="#"><i class='bx bxs-star' ></i></a>
+                            <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                        </div>
+                    </div>
+                </div> 
+                <p>Specializing in traditional Sri Lankan cuisine, Chef Anura brings authentic flavors 
+                    to life with over 15 years of experience in local and regional dishes.</p>
+            </div>
+
+            <div class="box">
+                 <div class="in-box1">
+                     <div class="bx-img1">
+                         <img src="img/c2.jpg">
+                     </div>
+                     <div class="bxx-text">
+                         <h4>Kristina </h4>
+                         <h5>chef</h5>
+                         <div class="ratings">
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                         </div>
+                     </div>
+                 </div> 
+                 <p>A master of fusion cooking, Chef Nuwan combines international techniques with local ingredients to create 
+                    unique, flavorful dishes that delight every palate.</p>
+             </div>
+
+             <div class="box">
+                 <div class="in-box1">
+                     <div class="bx-img1">
+                         <img src="img/c3.jpg">
+                     </div>
+                     <div class="bxx-text">
+                         <h4> Crus</h4>
+                         <h5>Chef</h5>
+                         <div class="ratings">
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                         </div>
+                     </div>
+                 </div> 
+                 <p> Renowned for his expertise in seafood, Chef Kamal ensures only the freshest ingredients 
+                    are used, preparing vibrant and creative seafood dishes.</p>
+             </div> 
+
+             <div class="box">
+                
+                 <div class="in-box1">
+                     <div class="bx-img1">
+                         <img src="img/c4.jpg">
+                     </div>
+                     <div class="bxx-text">
+                         <h4>Ann</h4>
+                         <h5>Chef</h5>
+                         <div class="ratings">
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                             <a href="#"><i class='bx bxs-star' ></i></a>
+                         </div>
+                     </div>
+                 </div> 
+                 <p>As our pastry chef, Chef Rani creates irresistible desserts and baked goods, 
+                    blending creativity with precision to deliver perfect sweet treats.</p>
+             </div> 
+        </div>
+     </section>
+
+         <!-- Contact -->
+         <section class="contact" id="contact">
+            <div class="contact-form">
+                <h2>CONTACT US</h2>
+                <form id="contactForm">
+                    <div class="form-item">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="error" id="nameError"></span>
+                    </div>
+                    <div class="form-item">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error" id="emailError"></span>
+                    </div>
+                    <div class="form-item">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                        <span class="error" id="messageError"></span>
+                    </div>
+                    <button type="submit" class="btn3" id="btnSubmit">Submit</button>
+                </form>
+            </div>
+        </section>
+    
+
+
+        <!-- review -->
+         <section class="review" id="review">
+            <div class="middle-text">
+                <h2>OUR CUSTOMERS</h2>
+                <h4>Clients Review About Our Food</h4>
+            </div>
+
+            <div class="review-content" id="reviewContent">
+
+                
+
+                <div class="box">
+                   <p>The Taste is still in my mouth and I can feel the depth of the taste of 
+                    the every ingr edients used in the food. I really Love Fafo</p>
+                    <div class="in-box">
+                        <div class="bx-img">
+                            <img src="img/r1.jpg">
+                        </div>
+                        <div class="bxx-text">
+                            <h4>Kristina Crus</h4>
+                            <h5>Food Vlogger</h5>
+                            <div class="ratings">
+                                <a href="#"><i class='bx bxs-star' ></i></a>
+                                <a href="#"><i class='bx bxs-star' ></i></a>
+                                <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="box">
+                    <p>The Taste is still in my mouth and I can feel the depth of the taste of 
+                     the every ingr edients used in the food. I really Love Fafo</p>
+                     <div class="in-box">
+                         <div class="bx-img">
+                             <img src="img/r2.jpg">
+                         </div>
+                         <div class="bxx-text">
+                             <h4>Kristina Crus</h4>
+                             <h5>Food Vlogger</h5>
+                             <div class="ratings">
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                             </div>
+                         </div>
+                     </div> 
+                 </div>
+
+                 <div class="box">
+                    <p>The Taste is still in my mouth and I can feel the depth of the taste of 
+                     the every ingr edients used in the food. I really Love Fafo</p>
+                     <div class="in-box">
+                         <div class="bx-img">
+                             <img src="img/r3.jpg">
+                         </div>
+                         <div class="bxx-text">
+                             <h4>Kristina Crus</h4>
+                             <h5>Food Vlogger</h5>
+                             <div class="ratings">
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                                 <a href="#"><i class='bx bxs-star' ></i></a>
+                             </div>
+                         </div>
+                     </div> 
+                 </div> 
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    // Fetch customer feedback from the API
+                    fetch("http://localhost:8080/api/feedback/view-all-customer-feedback")
+                      .then((response) => response.json())
+                      .then((data) => {
+                        const reviewContent = document.getElementById("reviewContent");
+                        reviewContent.innerHTML = ''; // Clear existing content
+                  
+                        data.forEach((feedback) => {
+                          // Create a div for the feedback box
+                          const feedbackBox = document.createElement("div");
+                          feedbackBox.className = "box";
+                          
+                          // Create the feedback message
+                          const feedbackMessage = document.createElement("p");
+                          feedbackMessage.textContent = feedback.message;
+                          feedbackBox.appendChild(feedbackMessage);
+                  
+                          // Create the in-box div
+                          const inBoxDiv = document.createElement("div");
+                          inBoxDiv.className = "in-box";
+                          
+                         // Create the image div (placeholder image since API response does not contain images)
+                          const imgDiv = document.createElement("div");
+                          imgDiv.className = "bx-img";
+                          const img = document.createElement("img");
+                          img.src = "img/default-review.jpg";  // Default image
+                          imgDiv.appendChild(img);
+                          inBoxDiv.appendChild(imgDiv);
+                  
+                          // Create the customer details text
+                          const bxxTextDiv = document.createElement("div");
+                          bxxTextDiv.className = "bxx-text";
+                  
+                          // Customer name
+                          const customerName = document.createElement("h4");
+                          customerName.textContent = feedback.customerName;
+                          bxxTextDiv.appendChild(customerName);
+                  
+                          // Placeholder for customer role (if needed)
+                          const customerRole = document.createElement("h5");
+                          customerRole.textContent = "Customer";  // Static role
+                          bxxTextDiv.appendChild(customerRole);
+                  
+                          // Append the ratings (optional)
+                          const ratingsDiv = document.createElement("div");
+                          ratingsDiv.className = "ratings";
+                          for (let i = 0; i < 5; i++) {  // Static 5-star rating
+                              const star = document.createElement("a");
+                              star.innerHTML = "<i class='bx bxs-star'></i>";
+                              ratingsDiv.appendChild(star);
+                          }
+                  
+                          bxxTextDiv.appendChild(ratingsDiv);
+                  
+                          // Append bxx-text to in-box
+                          inBoxDiv.appendChild(bxxTextDiv);
+                  
+                          // Append in-box to feedback box
+                          feedbackBox.appendChild(inBoxDiv);
+                  
+                          // Append the feedback box to the review content
+                          reviewContent.appendChild(feedbackBox);
+                        });
+                      })
+                      .catch((error) => {
+                        console.error("Error fetching feedback data:", error);
+                        alert("Error fetching feedback data.");
+                      });
+                });
+                </script>
+
+         </section>
+
+
+
+        
+       
+        
+
+         <!-- footer -->
+          <footer>
+
+            <div class="contact-text">
+                <p>Over its history as a food, the main uses of honey are in cooking,
+                    baking, desserts, as a spresd on bread, as an addition to various beverages 
+                    such as tea, and as a sweetener in some commercial beverages</p>
+                    <div class="social">
+                        <a href="#" class="clr"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-facebook' ></i></a>
+                        <a href="#"><i class='bx bxl-twitter' ></i></a>
+                        <a href="#"><i class='bx bxl-google' ></i></a>
+                    </div>
+            </div>
+
+         <div class="details">
+            <div class="main-d">
+                <a href="#"><i class='bx bxs-map' ></i>Main street, 11/A, Colombo 7.</a>
+            </div>
+
+            <div class="main-d">
+                <a href="#"><i class='bx bxs-phone' ></i>(+94) 77 345 6789</a>
+            </div>
+
+            <div class="main-d">
+                <a href="#"><i class='bx bx-envelope' ></i>info@abcrestaurant.com</a>
+            </div>
+         </div>   
+    </footer>
+
+     <!-- scroll top -->
+      <a href="#" class="scroll">
+        <i class='bx bx-up-arrow-alt' ></i>
+      </a>
+
+      <script src="https://unpkg.com/scrollreveal"></script>
+
+    
+    
+</body>
+</html>
